@@ -1,0 +1,28 @@
+{% extends "./base.html" %}
+{% load staticfiles %}
+{% block content%}
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/contact.css' %}"/>
+<h2>Complain</h2>
+<form class="contact" method="POST">
+    <fieldset  class="contact-inner">
+	{% csrf_token %}
+		<p class="contact-input">
+			{{ form.name.label_tag }}
+			{{ form.name }}
+		</p>
+		<p class="contact-input">
+			{{ form.description.label_tag }}
+			{{ form.description }}
+		</p>
+		<p class="contact-input">
+			{{ form.category.label_tag }}
+			{{ form.category }}
+		</p>
+		<p class="contact-input">
+			{{ form.area.label_tag }}
+			{{ form.area }}
+		</p>
+		<p class="contact-submit">
+            <button type="submit" value="submit">Submit</button>
+    	</p>
+{% endblock%}

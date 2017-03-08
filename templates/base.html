@@ -1,0 +1,110 @@
+{% load staticfiles %}
+<!DOCTYPE HTML5>
+<html>
+<head>
+<title>Egovernance</title>
+<meta charset="utf-8">
+
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/5grid/core.css' %}"/>
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/5grid/core-desktop.css' %}"/>
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/5grid/core-1200px.css' %}"/>
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/5grid/core-noscript.css' %}"/>
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/style.css' %}"/>
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/style-desktop.css' %}"/>
+
+
+<script src="{% static 'css/5grid/jquery.js' %}"></script>
+<script scr="{% static 'css/5grid/init.js?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none' %}"></script>
+    <style type="text/css">
+        div {
+            height: 350 p;
+        }
+    </style>
+    <!--[if IE 9]><link rel="stylesheet" href="{% static 'css/style-ie9.css' %}"><![endif]-->
+</head>
+<body>
+<div id="wrapper">
+  <div id="header-wrapper">
+    <header id="header">
+      <div class="5grid-layout">
+        <div class="row">
+          <div class="12u" id="logo">
+            <!-- Logo -->
+            <h1><a href="#" class="mobileUI-site-name">Egovernance</a></h1>
+          </div>
+        </div>
+      </div>
+      <div class="5grid-layout">
+        <div class="row">
+          <div class="12u" id="menu">
+            <nav class="mobileUI-site-nav">
+              <ul>
+                <li class="current_page_item"><a href="/index">Homepage</a></li>
+                <li><a href="/aboutus">About Us</a></li>
+                <li><a href="/contactus">Contact Us</a></li>
+                {% if request.user.is_authenticated %}
+                <li> <a href="/profile">My Profile </a></li>
+                <li> <a href="/logout">Logout</a></li>
+                {% else%}
+                <li><a href="/login">Login</a></li>
+                <li><a href="/signup">Signup</a></li>
+
+                {% endif %}
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+  <div id="page">
+      <div class="5grid-layout">
+        <div class="row">
+          <div class="3u" id="sidebar2">
+            <section>
+              <div class="sbox1">
+                <h2>Hello, {{ request.user }}</h2>
+                <ul class="style1">
+                {% if request.user.is_authenticated %}
+                  <li class="first"><a href="index">Homepage</a></li>
+                  <li><a href="aboutus">About us</a></li>
+                  <li><a href="contactus">contact us</a></li>
+                  <li><a href="message">message</a></li>
+                  <li><a href="suggestion">suggestion</a></li>
+                  <li><a href="complain">complain</a></li>
+                  <li><a href="tendar">tendar</a></li>
+                {% else%}
+                  <li class="first"><a href="#">Homepage</a></li>
+                  <li><a href="#">About us</a></li>
+                  <li><a href="#">contact us</a></li>                  
+                {% endif %}
+                </ul>
+              </div>
+            </section>
+          </div>
+          <div class="9u mobileUI-main-content" id="content">
+          <section>
+            <div class="post" style="height:450px">
+
+              {% block content %}
+              {% endblock %}
+
+            </div>
+          </section>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+<div id="footer-wrapper">
+  <div id="copyright">
+    <div class="5grid-layout">
+      <div class="row">
+        <div class="12u">
+          <p>&copy; Your Site Name | Images: <a target="_blank" href="http://fotogrph.com/">Fotogrph</a> | Design: <a target="_blank" href="http://html5templates.com/">HTML5Templates.com</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<div align=center>E-governance <a href='http://all-free-download.com/free-website-templates/'></a></div></body>
+</div></body></html>

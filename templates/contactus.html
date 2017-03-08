@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/contact.css' %}"/>
+<h2>Contact</h2>
+<br>
+<p>Hello {{ request.user}}, </p>
+<form class="contact" method="POST">
+    <fieldset  class="contact-inner">
+    {% csrf_token %}
+    <p class="contact-input">
+    	{{ form.contact_name.label_tag }}
+    	{{ form.contact_name }}
+    </p>
+    <p class="contact-input">
+    	{{ form.contact_email.label_tag	}}
+    	{{ form.contact_email	}}
+    </p>
+    <p class="contact-input">
+    	{{ form.content.label_tag }}
+    	{{ form.content	}}
+    </p>
+    <p class="contact-submit">
+    <button type="submit" value="">send message</button>
+    </p>
+    </fieldset>
+    </form>
+</form>
+{% endblock %}
+

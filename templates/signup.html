@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/contact.css' %}"/>
+<h2>Signup</h2>
+<form class="contact" method="POST">
+    <fieldset  class="contact-inner">
+    {% csrf_token %}
+    <p class="contact-input">
+    	{{ form.name.label_tag }}
+    	{{ form.name }}
+    </p>
+    <p class="contact-input">
+    	{{ form.email.label_tag	}}
+    	{{ form.email	}}
+    </p>
+    <p class="contact-input">
+    	{{ form.password1.label_tag }}
+    	{{ form.password1	}}
+    </p>
+    <p class="contact-input">
+    	{{ form.password2.label_tag }}
+    	{{ form.password2	}}
+    </p>
+    <button type="submit">Singup</button>
+    </fieldset>
+    </form>
+
+
+{% endblock %}

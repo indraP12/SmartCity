@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/contact.css' %}"/>
+<h2>Contact</h2>
+<form class="contact" method="POST">
+    <fieldset  class="contact-inner">
+    {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+
+    {% if next %}
+    {% if user.is_authenticated %}
+        <p>Your account doesn't have access to this page. To proceed,
+        please login with an account that has access.</p>
+    {% else %}
+        <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+    {% csrf_token %}
+		<p class="contact-input">
+			{{ form.username.label_tag }}
+			{{ form.username }}
+		</p>
+		<p class="contact-input">
+			{{ form.password.label_tag }}
+			{{ form.password }}
+		</p>
+    	<p class="contact-submit">
+            <button type="submit" value="login">login</button>
+    	</p>
+		<input type="hidden" name="next" value="{{ next }}" />
+</form>
+</div>
+{% endblock %}
